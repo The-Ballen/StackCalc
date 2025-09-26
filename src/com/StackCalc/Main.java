@@ -11,25 +11,25 @@ public class Main {
         String inputCode;
         Boolean valido;
 
-        // Lendo expressao StackCalc
-        System.out.print("Insira o codigo em StackCalc: ");
+        // Lendo expressão StackCalc
+        System.out.print("Insira a expressão em StackCalc: ");
         inputCode = scanner.nextLine();
         scanner.close();
 
-        // Analise Lexica
+        // Análise Léxica
         tokens = AnalisadorLexico.run(inputCode);
         System.out.println("Tokens:\n");
         for (Token t : tokens) {
             System.out.println(t);
         }
 
-        // Analise Sintatica
+        // Análise Sintática
         valido = AnalisadorSintatico.run(tokens);
-        System.out.println("\nAnalise sintatica: " + (valido ? "Sintaxe Valida" : "Erro de Sintaxe"));
+        System.out.println("\nAnálise sintática: " + (valido ? "Sintaxe Válida" : "Erro de Sintaxe"));
 
         // Valorando resultado e imprimindo
         if (valido) {
-            System.out.print("Resultado da expressao na pilha: ");
+            System.out.print("Resultado da expressão na pilha: ");
             resultStack = AnalisadorSintatico.eval(tokens);
             iterator = resultStack.descendingIterator();
             while (iterator.hasNext()) {
